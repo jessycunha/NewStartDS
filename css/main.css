@@ -1,0 +1,38 @@
+:root{
+  --color-text: #8fbb1c; 
+  --color-background: #fbe5d7;
+  color: #4aac63;
+  color: #337744;
+}
+
+/* body{ */
+  /* background-color: var(--color-background); */
+  /* background: url('../images/madeira.jpg'); */
+/* } */
+
+.container-header{
+  width: 100%;
+  display: flex;
+}
+
+.div-logo{
+  width: 25%;
+  margin: auto;
+  text-align: center;
+}
+
+.container-header a{
+  margin: auto;
+  font-family: 'Barlow-Light';
+  font-size: 20px;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.logo{
+  width: 75%;
+}
+
+.carousel{
+  margin-top: 10px;
+}

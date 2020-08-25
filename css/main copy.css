@@ -1,0 +1,157 @@
+body {
+  background-color: #bbffbb;
+}
+header{
+  background-image: url('../imagens/outros/3.jpg');
+}
+
+.container-brand{
+  width: 13%;
+  padding-left: 20px;
+}
+
+.brand{
+  width: 75%;
+}
+
+/* @media (min-width: 992px) {
+  body {
+  }
+} */
+
+#navbarcadastro{
+  border-radius: 20px;
+}
+
+
+#navbar-site{
+  width: 80%;
+}
+.navbar-nav{
+  margin: auto;
+  padding-top: 50px;
+}
+.dropdown-item{
+  color: white;
+  text-align: left;
+}
+.dropdown-menu{
+  background: #337744;
+  text-align: center;
+  margin: auto;
+}
+#barraPesquisa{
+  border-radius: 20px;
+}
+.nav-item{
+  font-size: 23px;
+  font-family: 'Pacifico', cursive;
+}
+.nav-icone{
+  width: 5%;
+}
+.card-body{
+  text-align: center;
+}
+.card-title{
+  color: #14411f;
+  font-family: 'Barlow-Light';
+}
+.card-price{
+  size: 20px;
+  color: tomato;
+  font-weight: bolder;
+}
+.card-text{
+  font-size: 12px;
+}
+.card-buttons{
+  text-align: center;
+}
+.row-contact{
+  font-family: cursive;
+  color: white;
+}
+.row-contact-menu{
+  text-align: center;
+  margin: 0px 55px 0px 0px;
+  height: 10px;
+}
+#navbar-menu{
+  margin: 15px 55px 0px 55px;
+}
+.container-icons{
+  height: 150px;
+  text-align: center;
+  margin: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.icons-products{
+  width: 13%;
+}
+.row-form{
+  margin: 20px 120px 0px 120px;
+}
+.carousel-box{
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.text-products{
+  font-family: cursive;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  padding-top: 5px;
+}
+.products{
+  margin: 40px 55px 40px 55px;
+  background: linear-gradient(to bottom, #4aac63, #337744);
+  border-radius: 20px;
+  height: 50px;
+}
+.container-form{
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.form-group{
+  margin-left: auto;
+  margin-right: auto;
+}
+.footer{
+  background: linear-gradient(to bottom, #4aac63, #337744);
+}
+.title-footer{
+  font-size: 25px;
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+}
+#text-footer{
+  font-size: 20px;
+  text-align: center;
+}
+.creditcards{
+  text-align: center;
+}
+.img-cartao{
+  width: 20%;
+}
+.security{
+  margin: auto;
+  color: white;
+  text-align: center;
+}
+.siteblindado{
+  width: 30%;
+}
+.siteblindado2{
+  width: 50%;
+}
+.socialmedias{
+  text-align: center;
+}
+.redesSociais{
+  width: 50%;
+}
