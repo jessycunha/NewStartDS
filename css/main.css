@@ -1,24 +1,45 @@
 :root{
-  --color-text: #8fbb1c; 
-  --color-background: #fbe5d7;
-  color: #4aac63;
-  color: #337744;
+  --color-text: #306d1f;
+  /* --color-text: #8fbb1c; */
+  /* color: #4aac63;
+  color: #337744; */
 }
 
-/* body{ */
-  /* background-color: var(--color-background); */
-  /* background: url('../images/madeira.jpg'); */
-/* } */
+body{
+  background: url("../images/banners/banner3.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
 
 .container-header{
   width: 100%;
-  display: flex;
+  margin-top: 45px;
+  padding: 0 24px 0 24px;
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 2fr;
+  grid-template-areas: "enterprise logo client";
+}
+
+.enterprise-area{
+  grid-area: enterprise;
+  text-align: initial;
+  align-self: flex-end;
+  justify-content: space-between;
+
 }
 
 .div-logo{
-  width: 25%;
-  margin: auto;
+  grid-area: logo;
+  width: 100%;
+  margin: 0;
   text-align: center;
+}
+
+.client-area{
+  grid-area: client;
+  text-align: end;
+  align-self: flex-end;
+  justify-content: space-between;
 }
 
 .container-header a{
@@ -33,6 +54,36 @@
   width: 75%;
 }
 
-.carousel{
-  margin-top: 10px;
+.tag-icon{
+  width: 8%;
+  margin-left: 15px ;
+}
+
+.tag-icon:hover{
+  width: 10%;
+}
+
+.groups{
+  margin: 15px 24px 0 24px;
+}
+
+.groups-icon{
+  width: 60%;
+}
+
+.groups-icon:hover{
+  width: 65%;
+}
+
+.nav-tabs{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  /* grid-template-rows: 100px; */
+  column-gap: 5px;
+  /* padding: 0; */
+}
+
+.nav-item{
+  text-align: center;
+  align-self: center;
 }

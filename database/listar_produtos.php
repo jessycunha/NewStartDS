@@ -1,4 +1,4 @@
-<?php include '../templates/adm_header.php'; ?>
+
 
     <div class='container' width='300px'>
         <a class='btn btn-success btn-sm' style='color: #fff' href='inserir_produto.php?' role='button'>Novo Produto</a>
@@ -41,7 +41,5 @@
         </table>
         <p>Total de itens cadastrados: <?php echo $i ?></p>
     </div>
-
-<?php include '../templates/adm_footer.php'; ?>
 
 
