@@ -1,8 +1,10 @@
 :root{
   --color-text: #306d1f;
+  --color-text-light: #4aac63;
+  --color-text-lighter: #ddffe6;
   /* --color-text: #8fbb1c; */
-  /* color: #4aac63;
-  color: #337744; */
+  
+  /* color: #337744; */
 }
 
 body{
@@ -57,33 +59,78 @@ body{
 .tag-icon{
   width: 8%;
   margin-left: 15px ;
+  transition: transform 0.3s;
 }
 
 .tag-icon:hover{
-  width: 10%;
+  transform: scale(1.3);
+}
+
+.carousel{
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
 }
 
 .groups{
-  margin: 15px 24px 0 24px;
+  width: auto;
+  height: 80px;
+  margin: 0 85px 0 85px;
+  padding: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  
 }
 
-.groups-icon{
-  width: 60%;
+.groups img{
+  width: 60px;
+  transition: transform 0.2s;
 }
 
-.groups-icon:hover{
-  width: 65%;
+.groups img:hover{
+  transform: scale(1.3);
 }
 
-.nav-tabs{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  /* grid-template-rows: 100px; */
-  column-gap: 5px;
-  /* padding: 0; */
+.cards{
+  margin: 24px;
 }
 
-.nav-item{
+#card{
+  margin-bottom: 30px;
+}
+
+.card{
   text-align: center;
-  align-self: center;
+  background-color: var(--color-text-lighter);
+}
+
+.card-title{
+  color: var(--color-text);
+}
+
+.card-price{
+  color: tomato;
+}
+
+.card-price span{
+  font-size: 50%;
+}
+
+.add-cart{
+  width: 50%;
+}
+
+.cards button img{
+  width: 20px;
+}
+
+/* Retirar as setas no input do tipo number */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
 }
