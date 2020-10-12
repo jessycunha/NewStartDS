@@ -17,7 +17,7 @@
             if(mysqli_num_rows($resultPass) == 1) :
                 $dados = mysqli_fetch_array($resultPass);
                 $_SESSION['logon'] = true;
-                $_SESSION['id'] = $dados['id_usuario'];
+                $_SESSION['id_usuario'] = $dados['id_usuario'];
                 header('Location: index.php');
             else:
                 $erros[] = "Senha Incorreta";

@@ -1,5 +1,10 @@
 <?php
     session_start();
+
+    // if(isset($_SESSION['logon']){
+
+    // };
+    // $_SESSION['id'] = $dados['id_usuario'];
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +18,7 @@
     <link rel="stylesheet" href="../css/main.css">
     <!-- <link rel="stylesheet" href="../fonts/Barlow-Light.ttf"> -->
     <!-- <script src="../js/cart.js" async></script> -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
 
 </head>
 <body>
@@ -34,6 +40,7 @@
             <a href="login.php" ><img class="tag-icon" src="../images/icons/login.png" alt=""></a>
         </div>
     </div>
+    </h3>
 
     <div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -46,13 +53,26 @@
           </div>
           <div class="modal-body">
             
-          <div id="itens-cart">
-            
-          </div>
+            <table id="itens-cart2" class="table table-sm">
+              <thead>
+                  <tr>
+                      <th scope="col">Imagem</th>
+                      <th scope="col">Produto</th>
+                      <th scope="col">Quantidade</th>
+                      <th scope="col">Preço</th>
+                      <th scope="col">Remover</th>
+                  </tr>
+              </thead>
+              <tbody id="itens-cart">
+                
+              </tbody>
+            </table>
 
           </div>
-        
+
           <div class="modal-footer">
+            <label for="">Total</label>
+            <input id="total" type="number">
             <h6>Escolher veículo e horário</h6>
             <button type="button" class="btn btn-primary">Pagar</button>
           </div>
@@ -159,12 +179,17 @@
           method: 'post',
           data: {id_produto},
           dataType: 'text',
-          success: function(produto){
-            $('#modalCart').modal('show');
-            $('#itens-cart').append(produto);
+          success: function(item) {
+              $('#modalCart').modal('show');
+              // $('#itens-cart').append(dados);
+              $("#itens-cart").append(item);
           }
         });
       }
+
+      // $("#total").on('show.bs.modal', function(){
+      //   $("#total").val("1");
+      // });
     </script>
 
     <script src="../vendor/jquery/jquery.min.js"></script>

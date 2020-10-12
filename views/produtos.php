@@ -6,10 +6,11 @@
     <title>Produtos</title>
 
     <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/products.css">
 </head>
 <body>
     <div class='container' width='300px'>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalNewProduct">Novo Produto</button>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-produtos">Novo Produto</button>
         <table class="table table-sm">
             <thead>
                 <tr>
@@ -42,8 +43,8 @@
                     <th><?php echo $preco_venda ?></th>
                     <th><?php echo $grupo ?></th>
                     <th>
-                        <a class='btn btn-warning btn-sm' style='color: #fff' href='editProduct.php?id=<?php echo $id_produto ?>' role='button'>Editar</a>
-                        <a class='btn btn-danger btn-sm' style='color: #fff' href='deleteProduct.php?id=<?php echo $id_produto ?>'>Deletar</a>
+                        <a class='btn btn-warning btn-sm' style='color: #fff' href='editar_produtos.php?id=<?php echo $id_produto ?>' role='button'>Editar</a>
+                        <a class='btn btn-danger btn-sm' style='color: #fff' href='../php/deletar_produtos.php?id=<?php echo $id_produto ?>'>Deletar</a>
                     </th>
                 </tr>
 
@@ -54,7 +55,7 @@
     </div>
     
 
-    <div class="modal fade" id="modalNewProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modal-produtos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -64,7 +65,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="../php/insertProduct.php" method="POST" enctype="multipart/form-data">
+                <form action="../php/inserir_produtos.php" method="POST" enctype="multipart/form-data">
                     <input type="text" name="produto" placeholder="Nome">
                     <select name="grupo" >
                         <option value="1">Frutas</option>
@@ -76,11 +77,10 @@
                     </select>
                     <input type="number" name="preco_custo" placeholder="Preço de Custo">
                     <input type="number" name="preco_venda" placeholder="Preço de Venda">
-                    <input type="file" name="imagem" placeholer="Foto do Produto">
+                    <input type="file" name="imagem">
             </div>
             <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" data-dismiss="modal">Salvar e Sair</button>
-                    <button type="submit" class="btn btn-success">Salvar e Adicionar +</button>
+                    <button type="submit" class="btn btn-success">Salvar</button>
                 </form>
             </div>
             </div>
