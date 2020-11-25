@@ -1,0 +1,97 @@
+.tab_container_area{
+    margin-left: 200px;
+    transition: all 500ms linear;
+}
+
+.tab_container_area.inactive{
+    margin-left: 0;
+}
+
+.tab_container{
+    padding: 100px 30px;
+}
+
+#dashboard{
+    width: 100%;
+}
+
+#new{
+    margin-bottom: 15px;
+}
+
+#modal-products{
+    background: linear-gradient(-135deg, #4dc42c, #4aac63);
+    padding: 30px;
+}
+
+.modal-body{
+    padding-top: 20px !important;
+}
+
+.custom-input{
+    height: 40px;
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.custom-input input, select{
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 17px;
+    background-color: transparent;
+    border-bottom: 1px solid #306d1f; 
+}
+
+.custom-input input:focus, select:focus{
+    outline: 0;
+}
+
+.custom-input input:focus ~ label,
+.custom-input input:valid ~ label{
+    transform: translateY(-20px);
+    font-size: 15px;
+}
+
+.custom-input select:focus ~ label,
+.custom-input select:valid ~ label{
+    transform: translateY(-20px);
+    font-size: 15px;
+}
+
+.custom-input label{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    color: #306d1f;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.custom-input .underline{
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+}
+/*
+.underline:before{
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    background: #306d1f;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.custom-input input:focus ~ .underline:before
+/* ,
+.custom-input input:valid ~ .underline:before */
+{
+    transform: scaleX(1);
+
+} */
+
+

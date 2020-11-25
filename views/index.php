@@ -1,10 +1,6 @@
 <?php
+    include "../database/connection.php";
     session_start();
-
-    // if(isset($_SESSION['logon']){
-
-    // };
-    // $_SESSION['id'] = $dados['id_usuario'];
 ?>
 
 <!DOCTYPE html>
@@ -16,18 +12,16 @@
 
     <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/main.css">
-    <!-- <link rel="stylesheet" href="../fonts/Barlow-Light.ttf"> -->
-    <!-- <script src="../js/cart.js" async></script> -->
+    <link rel="icon" href="../images/icons/leaf.png">
     <script src="../vendor/jquery/jquery.min.js"></script>
-
 </head>
 <body>
 
     <div class="container-header">
         <div class="enterprise-area">
-            <a href="" ><img class="tag-icon" src="../images/icons/about.png" alt=""></a>
-            <a href="" ><img class="tag-icon" src="../images/icons/email.png" alt=""></a>
-            <a href="" ><img class="tag-icon" src="../images/icons/joinus.png" alt=""></a>
+            <a href="" title="Sobre nós"><img class="tag-icon" src="../images/icons/about.png" alt=""></a>
+            <a href="" title="Contato"><img class="tag-icon" src="../images/icons/email.png" alt=""></a>
+            <a href="" title="Trabalhe conosco"><img class="tag-icon" src="../images/icons/joinus.png" alt=""></a>
         </div>
         <div class="div-logo">
             <a href=""  href="index.html">
@@ -35,9 +29,11 @@
             </a>
         </div>
         <div class="client-area">
-            <a href="" ><img class="tag-icon" src="../images/icons/tag.png" alt=""></a>
-            <a href="" data-toggle="modal" data-target="#modalCart"><img class="tag-icon" src="../images/icons/cart.png" alt=""></a>
-            <a href="login.php" ><img class="tag-icon" src="../images/icons/login.png" alt=""></a>
+            <!-- <h4 id="hello">Olá, Jessica</h4> -->
+            <a href="" title="Ofertas"><img class="tag-icon" src="../images/icons/tag.png" alt=""></a>
+            <a href="" title="Carrinho" data-toggle="modal" data-target="#modalCart"><img class="tag-icon" src="../images/icons/cart.png" alt=""></a>
+            <a href="login.php" title="Entrar"><img class="tag-icon" src="../images/icons/login.png" alt=""></a>
+            <!-- <a href="" title="Entrar" data-toggle="modal" data-target="#modalLogin"><img class="tag-icon" src="../images/icons/login.png" alt=""></a> -->
         </div>
     </div>
     </h3>
@@ -52,7 +48,6 @@
             </button>
           </div>
           <div class="modal-body">
-            
             <table id="itens-cart2" class="table table-sm">
               <thead>
                   <tr>
@@ -64,20 +59,14 @@
                   </tr>
               </thead>
               <tbody id="itens-cart">
-                
               </tbody>
             </table>
-
           </div>
-
           <div class="modal-footer">
             <label for="">Total</label>
             <input id="total" type="number">
-            <h6>Escolher veículo e horário</h6>
             <button type="button" class="btn btn-primary">Pagar</button>
           </div>
-        
-
         </div>
       </div>
     </div>
@@ -127,46 +116,268 @@
     </div>
 
     <div class="groups">
-        <a href="frutas.php"><img src="../images/icons/fruits.png" alt="Frutas"></a>
-        <a href="verduras.php"><img src="../images/icons/greens.png" alt="Verduras"></a>
-        <a href="legumes.php"><img src="../images/icons/vegetables.png" alt="Legumes"></a>
-        <a href="graos.php"><img src="../images/icons/grains.png" alt="Grãos"></a>
-        <a href="temperos.php"><img src="../images/icons/condiment.png" alt="Temperos"></a>
-        <a href="granja.php"><img src="../images/icons/egg.png" alt="Granja"></a>
-    </div>
+      <ul class="tab_navigation">
+        <li class="active"><img src="../images/icons/allproducts" alt="Produtos"></li>
+        <li><img src="../images/icons/fruits.png" alt="Frutas"></li>
+        <li><img src="../images/icons/greens.png" alt="Verduras"></li>
+        <li><img src="../images/icons/vegetables.png" alt="Legumes"></li>
+        <li><img src="../images/icons/grains.png" alt="Grãos"></li>
+        <li><img src="../images/icons/condiment.png" alt="Temperos"></li>
+        <li><img src="../images/icons/egg.png" alt="Granja"></li>
+      </ul>
+      </div>
+      <div class="tab_container_area">
+      <div class="tab_container">
+        <div class='cards'>
+          <div class="row">
+          
+            <?php include '../database/connection.php'; 
+            $sql = "SELECT * FROM produtos";
+            $search = mysqli_query($connection, $sql);
+            
+            while ($array = mysqli_fetch_array($search)){
+              $id_produto = $array['id_produto'];
+              $produto = $array['produto'];
+              $preco_venda = $array['preco_venda'];
+              $imagem = $array['imagem'];
+            ?>
 
-    <div class='cards'>
-      <div class="row">
-      
-        <?php include '../database/connection.php'; 
-        $sql = "SELECT * FROM produtos";
-        $search = mysqli_query($connection, $sql);
-        
-        while ($array = mysqli_fetch_array($search)){
-          $id_produto = $array['id_produto'];
-          $produto = $array['produto'];
-          $preco_venda = $array['preco_venda'];
-          $imagem = $array['imagem'];
-        ?>
-
-        <div class="col-lg-3 col-md-4 col-sm-6 col-12" id="card">
-          <div class="card h-100 w-120">
-            <img class="card-img-top" src="<?php echo $imagem ?>" alt="">
-            <!-- <a href="#"><img class="card-img-top" src="<?php //echo $imagem ?>" alt=""></a> -->
-            <div class="card-body">
-            <input type="" name="id_produto" id="id_produto" value="<?php echo $id_produto ?>"/>
-              <h4 class="card-title shop-item-title" id="produto"><?php echo $produto ?></h4>
-              <h2 class="card-price shop-item-price" id="preco">R$<?php echo $preco_venda ?><span> /un.</span></h2>
-              <div class="card-buttons">
-                <!-- <a href="index.php?funcao=add&id=<?php //echo $id_produto ?>">Comprar</a> -->    
-                <a class="btn btn-success" onclick="addCart('<?php echo $id_produto ?>')">Comprar</a>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12" id="card">
+              <div class="card h-100 w-120">
+                <img class="card-img-top" src="<?php echo $imagem ?>" alt="">
+                <!-- <a href="#"><img class="card-img-top" src="<?php //echo $imagem ?>" alt=""></a> -->
+                <div class="card-body">
+                  <input type="hidden" name="id_produto" id="id_produto" value="<?php echo $id_produto ?>"/>
+                  <h4 class="card-title shop-item-title" id="produto"><?php echo $produto ?></h4>
+                  <h2 class="card-price shop-item-price" id="preco">R$<?php echo $preco_venda ?><span> /un.</span></h2>
+                  <div class="card-buttons">
+                    <!-- <a href="index.php?funcao=add&id=<?php //echo $id_produto ?>">Comprar</a> -->    
+                    <a class="btn btn-success" onclick="addCart('<?php echo $id_produto ?>')">Comprar</a>
+                  </div>
+                </div>
               </div>
             </div>
+
+            <?php } ?>
+
           </div>
         </div>
+      </div>
+      <div class="tab_container">
+        <div class='cards'>
+          <div class="row">
+          
+            <?php include '../database/connection.php'; 
+            $sql = "SELECT * FROM produtos WHERE grupo_id = 1";
+            $search = mysqli_query($connection, $sql);
+            
+            while ($array = mysqli_fetch_array($search)){
+              $id_produto = $array['id_produto'];
+              $produto = $array['produto'];
+              $preco_venda = $array['preco_venda'];
+              $imagem = $array['imagem'];
+            ?>
 
-        <?php } ?>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12" id="card">
+              <div class="card h-100 w-120">
+                <img class="card-img-top" src="<?php echo $imagem ?>" alt="">
+                <!-- <a href="#"><img class="card-img-top" src="<?php //echo $imagem ?>" alt=""></a> -->
+                <div class="card-body">
+                <input type="hidden" name="id_produto" id="id_produto" value="<?php echo $id_produto ?>"/>
+                  <h4 class="card-title shop-item-title" id="produto"><?php echo $produto ?></h4>
+                  <h2 class="card-price shop-item-price" id="preco">R$<?php echo $preco_venda ?><span> /un.</span></h2>
+                  <div class="card-buttons">
+                    <!-- <a href="index.php?funcao=add&id=<?php //echo $id_produto ?>">Comprar</a> -->    
+                    <a class="btn btn-success" onclick="addCart('<?php echo $id_produto ?>')">Comprar</a>
+                  </div>
+                </div>
+              </div>
+            </div>
 
+            <?php } ?>
+
+          </div>
+        </div>
+      </div>
+      <div class="tab_container">
+        <div class='cards'>
+          <div class="row">
+          
+            <?php include '../database/connection.php'; 
+            $sql = "SELECT * FROM produtos WHERE grupo_id = 2";
+            $search = mysqli_query($connection, $sql);
+            
+            while ($array = mysqli_fetch_array($search)){
+              $id_produto = $array['id_produto'];
+              $produto = $array['produto'];
+              $preco_venda = $array['preco_venda'];
+              $imagem = $array['imagem'];
+            ?>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12" id="card">
+              <div class="card h-100 w-120">
+                <img class="card-img-top" src="<?php echo $imagem ?>" alt="">
+                <!-- <a href="#"><img class="card-img-top" src="<?php //echo $imagem ?>" alt=""></a> -->
+                <div class="card-body">
+                <input type="hidden" name="id_produto" id="id_produto" value="<?php echo $id_produto ?>"/>
+                  <h4 class="card-title shop-item-title" id="produto"><?php echo $produto ?></h4>
+                  <h2 class="card-price shop-item-price" id="preco">R$<?php echo $preco_venda ?><span> /un.</span></h2>
+                  <div class="card-buttons">
+                    <!-- <a href="index.php?funcao=add&id=<?php //echo $id_produto ?>">Comprar</a> -->    
+                    <a class="btn btn-success" onclick="addCart('<?php echo $id_produto ?>')">Comprar</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <?php } ?>
+
+          </div>
+        </div>
+      </div>
+      <div class="tab_container">
+        <div class='cards'>
+          <div class="row">
+          
+            <?php include '../database/connection.php'; 
+            $sql = "SELECT * FROM produtos WHERE grupo_id = 3";
+            $search = mysqli_query($connection, $sql);
+            
+            while ($array = mysqli_fetch_array($search)){
+              $id_produto = $array['id_produto'];
+              $produto = $array['produto'];
+              $preco_venda = $array['preco_venda'];
+              $imagem = $array['imagem'];
+            ?>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12" id="card">
+              <div class="card h-100 w-120">
+                <img class="card-img-top" src="<?php echo $imagem ?>" alt="">
+                <!-- <a href="#"><img class="card-img-top" src="<?php //echo $imagem ?>" alt=""></a> -->
+                <div class="card-body">
+                <input type="hidden" name="id_produto" id="id_produto" value="<?php echo $id_produto ?>"/>
+                  <h4 class="card-title shop-item-title" id="produto"><?php echo $produto ?></h4>
+                  <h2 class="card-price shop-item-price" id="preco">R$<?php echo $preco_venda ?><span> /un.</span></h2>
+                  <div class="card-buttons">
+                    <!-- <a href="index.php?funcao=add&id=<?php //echo $id_produto ?>">Comprar</a> -->    
+                    <a class="btn btn-success" onclick="addCart('<?php echo $id_produto ?>')">Comprar</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <?php } ?>
+
+          </div>
+        </div>
+      </div>
+      <div class="tab_container">
+        <div class='cards'>
+          <div class="row">
+          
+            <?php include '../database/connection.php'; 
+            $sql = "SELECT * FROM produtos WHERE grupo_id = 4";
+            $search = mysqli_query($connection, $sql);
+            
+            while ($array = mysqli_fetch_array($search)){
+              $id_produto = $array['id_produto'];
+              $produto = $array['produto'];
+              $preco_venda = $array['preco_venda'];
+              $imagem = $array['imagem'];
+            ?>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12" id="card">
+              <div class="card h-100 w-120">
+                <img class="card-img-top" src="<?php echo $imagem ?>" alt="">
+                <!-- <a href="#"><img class="card-img-top" src="<?php //echo $imagem ?>" alt=""></a> -->
+                <div class="card-body">
+                <input type="hidden" name="id_produto" id="id_produto" value="<?php echo $id_produto ?>"/>
+                  <h4 class="card-title shop-item-title" id="produto"><?php echo $produto ?></h4>
+                  <h2 class="card-price shop-item-price" id="preco">R$<?php echo $preco_venda ?><span> /un.</span></h2>
+                  <div class="card-buttons">
+                    <!-- <a href="index.php?funcao=add&id=<?php //echo $id_produto ?>">Comprar</a> -->    
+                    <a class="btn btn-success" onclick="addCart('<?php echo $id_produto ?>')">Comprar</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <?php } ?>
+
+          </div>
+        </div>
+      </div>
+      <div class="tab_container">
+        <div class='cards'>
+          <div class="row">
+          
+            <?php include '../database/connection.php'; 
+            $sql = "SELECT * FROM produtos WHERE grupo_id = 5";
+            $search = mysqli_query($connection, $sql);
+            
+            while ($array = mysqli_fetch_array($search)){
+              $id_produto = $array['id_produto'];
+              $produto = $array['produto'];
+              $preco_venda = $array['preco_venda'];
+              $imagem = $array['imagem'];
+            ?>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12" id="card">
+              <div class="card h-100 w-120">
+                <img class="card-img-top" src="<?php echo $imagem ?>" alt="">
+                <!-- <a href="#"><img class="card-img-top" src="<?php //echo $imagem ?>" alt=""></a> -->
+                <div class="card-body">
+                <input type="hidden" name="id_produto" id="id_produto" value="<?php echo $id_produto ?>"/>
+                  <h4 class="card-title shop-item-title" id="produto"><?php echo $produto ?></h4>
+                  <h2 class="card-price shop-item-price" id="preco">R$<?php echo $preco_venda ?><span> /un.</span></h2>
+                  <div class="card-buttons">
+                    <!-- <a href="index.php?funcao=add&id=<?php //echo $id_produto ?>">Comprar</a> -->    
+                    <a class="btn btn-success" onclick="addCart('<?php echo $id_produto ?>')">Comprar</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <?php } ?>
+
+          </div>
+        </div>
+      </div>
+      <div class="tab_container">
+        <div class='cards'>
+          <div class="row">
+          
+            <?php include '../database/connection.php'; 
+            $sql = "SELECT * FROM produtos WHERE grupo_id = 6";
+            $search = mysqli_query($connection, $sql);
+            
+            while ($array = mysqli_fetch_array($search)){
+              $id_produto = $array['id_produto'];
+              $produto = $array['produto'];
+              $preco_venda = $array['preco_venda'];
+              $imagem = $array['imagem'];
+            ?>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12" id="card">
+              <div class="card h-100 w-120">
+                <img class="card-img-top" src="<?php echo $imagem ?>" alt="">
+                <!-- <a href="#"><img class="card-img-top" src="<?php //echo $imagem ?>" alt=""></a> -->
+                <div class="card-body">
+                <input type="hidden" name="id_produto" id="id_produto" value="<?php echo $id_produto ?>"/>
+                  <h4 class="card-title shop-item-title" id="produto"><?php echo $produto ?></h4>
+                  <h2 class="card-price shop-item-price" id="preco">R$<?php echo $preco_venda ?><span> /un.</span></h2>
+                  <div class="card-buttons">
+                    <!-- <a href="index.php?funcao=add&id=<?php //echo $id_produto ?>">Comprar</a> -->    
+                    <a class="btn btn-success" onclick="addCart('<?php echo $id_produto ?>')">Comprar</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <?php } ?>
+
+          </div>
+        </div>
       </div>
     </div>
 
@@ -187,14 +398,25 @@
         });
       }
 
-      // $("#total").on('show.bs.modal', function(){
-      //   $("#total").val("1");
-      // });
+      $('#enter').click(function(){
+        var email = $('#email').val();
+        var password = $('#password').val();
+        $.ajax({
+          url: '../php/login.php',
+          method: 'POST',
+          data: {email, password},
+          success: function(data){
+
+          }
+        });
+      });
+
     </script>
 
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/popper.js/dist/umd/popper.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/tabs.js" type="text/javascript"></script>
 
 </body>
 </html>

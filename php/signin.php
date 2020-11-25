@@ -2,25 +2,25 @@
 
 include "../database/connection.php";
 
-$name = $_POST['name'];
+$nome = $_POST['nome'];
 $cpf = $_POST['cpf'];
-$contact = $_POST['contact'];
-$address = $_POST['address'];
+$contato = $_POST['contato'];
+$endereco = $_POST['endereco'];
 $cep = $_POST['cep']; 
 $bairro = $_POST['bairro'];
-$city = $_POST['city'];
-$state = $_POST['state'];
-$email = $_POST['email'];
-$password = md5($_POST['password']);
+$cidade = $_POST['cidade'];
+$uf = $_POST['uf'];
+$email = $_POST['emailcad'];
+$senha = md5($_POST['senhacad']);
 
-// var_dump($name, $cpf, $contact, $address, $cep, $bairro, $city, $state);
-
-$sqlCli = "INSERT INTO clientes VALUES ('', '$name', '$cpf', '$contact', '$address', '$bairro', '$city', '$state', '$cep')";
-$sqlUser = "INSERT INTO usuarios VALUES ('', '$email', '$password', LAST_INSERT_ID())";
+$sqlCli = "INSERT INTO clientes VALUES ('', '$nome', '$cpf', '$contato', '$endereco', '$bairro', '$cidade', '$uf', '$cep')";
 
 $insertCli = mysqli_query($connection, $sqlCli);
+$id = mysqli_insert_id($connection);
+
+$sqlUser = "INSERT INTO usuarios VALUES ('', '$email', '$senha', 0, $id)";
 $insertUser = mysqli_query($connection, $sqlUser);
+
+header("Location: ../views/login.php");
 ?>
 
-<h3>Cadastrado com sucesso</h3>
-<a href="../views/login.php">Entrar</a>

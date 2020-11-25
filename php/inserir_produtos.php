@@ -14,5 +14,5 @@
     $sql = "INSERT INTO produtos VALUES ('', '$produto', '$preco_custo', '$preco_venda', '$imagem', $grupo)";
     $insert = mysqli_query($connection, $sql);
 
-    header('Location: ../views/produtos.php');
+    header('Location: ../views/admin.php');
 ?>
