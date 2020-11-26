@@ -16,8 +16,19 @@
 
             if(mysqli_num_rows($resultPass) == 1) :
                 $dados = mysqli_fetch_array($resultPass);
+
                 $_SESSION['logon'] = true;
-                $_SESSION['id_usuario'] = $dados['id_usuario'];
+                $_SESSION['cliente_id'] = $dados['cliente_id'];
+                $_SESSION['nivel'] = $dados['nivel'];
+
+                $id = $_SESSION['cliente_id'];
+                $sqlClient = "SELECT * FROM clientes WHERE id_cliente = $id";
+                $resultClient = mysqli_query($connection, $sqlClient);
+                if(mysqli_num_rows($resultClient) == 1) :
+                    $cliente = mysqli_fetch_array($resultClient);
+                    $_SESSION['nome'] = $cliente['nome'];
+                endif;    
+
                 header('Location: index.php');
             else:
                 $erros[] = "Senha Incorreta";

@@ -1,6 +1,8 @@
 <?php
     include "../database/connection.php";
     session_start();
+    
+    // $_SESSION['cliente_id'];
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +31,15 @@
             </a>
         </div>
         <div class="client-area">
-            <!-- <h4 id="hello">Olá, Jessica</h4> -->
+            <?php 
+            if  (isset($_SESSION['logon'])):
+              echo "<h4>Olá, " . $_SESSION['nome'] . "</h4>";
+              if ($_SESSION['nivel'] == 1):
+                echo '<a href="admin.php" title="Painel Administrativo"><img class="tag-icon" src="../images/icons/admin.png" alt=""></a>';
+              endif;
+            endif;
+            ?>
+            
             <a href="" title="Ofertas"><img class="tag-icon" src="../images/icons/tag.png" alt=""></a>
             <a href="" title="Carrinho" data-toggle="modal" data-target="#modalCart"><img class="tag-icon" src="../images/icons/cart.png" alt=""></a>
             <a href="login.php" title="Entrar"><img class="tag-icon" src="../images/icons/login.png" alt=""></a>

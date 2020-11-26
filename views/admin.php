@@ -23,6 +23,7 @@
         <li>Fornecedores</li>
         <li>Pedidos</li>
         <li>Entregas</li>
+        <li>Colaboradores</li>
       </ul>
     </div>
 
@@ -133,15 +134,17 @@
                     <th scope="col">Contato</th>
                     <th scope="col">Endereço</th>
                     <th scope="col">E-mail</th>
+                    <th scope="col">Tornar Colaborador</th>
                 </tr>
             </thead>
             <tbody>
                 <?php include '../database/connection.php';
-                $sql = "SELECT * FROM clientes c JOIN usuarios u ON c.id_cliente = u.cliente_id ORDER BY c.nome ASC";
+                $sql = "SELECT * FROM clientes c JOIN usuarios u ON c.id_cliente = u.cliente_id WHERE nivel = 0 ORDER BY c.nome ASC";
                 $search = mysqli_query($connection, $sql);
 
                 $i = 0;
                 while ($array = mysqli_fetch_array($search)){
+                    $id_cliente = $array['id_cliente'];
                     $nome = $array['nome'];
                     $contato = $array['contato'];
                     $cidade = $array['cidade'];
@@ -152,6 +155,9 @@
                     <th><?php echo $contato ?></th>
                     <th><?php echo $cidade ?></th>
                     <th><?php echo $email ?></th>
+                    <th>
+                        <a class='btn btn-primary btn-sm' style='color: #fff' href='../php/inserir_colaborador.php?id=<?php echo $id_cliente ?>' role='button'>OK</a>
+                    </th>
                 </tr>
 
                 <?php $i++; } ?>
@@ -339,6 +345,46 @@
 
       <div class="tab_container">
         <p>entregas</p>
+      </div>
+
+      <div class="tab_container">
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Contato</th>
+                    <th scope="col">Endereço</th>
+                    <th scope="col">E-mail</th>
+                    <th scope='col'>Demitir Colaborador</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php include '../database/connection.php';
+                $sql = "SELECT * FROM clientes c JOIN usuarios u ON c.id_cliente = u.cliente_id where nivel = 1 ORDER BY c.nome ASC";
+                $search = mysqli_query($connection, $sql);
+
+                $i = 0;
+                while ($array = mysqli_fetch_array($search)){
+                    $id_cliente = $array['id_cliente'];
+                    $nome = $array['nome'];
+                    $contato = $array['contato'];
+                    $cidade = $array['cidade'];
+                    $email = $array['email'];
+                ?>
+                <tr>
+                    <th><?php echo $nome ?></th>
+                    <th><?php echo $contato ?></th>
+                    <th><?php echo $cidade ?></th>
+                    <th><?php echo $email ?></th>
+                    <th>
+                        <a class='btn btn-primary btn-sm' style='color: #fff' href='../php/deletar_colaborador.php?id=<?php echo $id_cliente ?>' role='button'>OK</a>
+                    </th>
+                </tr>
+
+                <?php $i++; } ?>
+            </tbody>
+        </table>
+        <p>Total de itens cadastrados: <?php echo $i ?></p>
       </div>
 
     </div>
